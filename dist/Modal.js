@@ -15,6 +15,7 @@
       onClose = _ref.onClose,
       modalContent = _ref.modalContent,
       isActive = _ref.isActive;
+    // fermer la modal en appelant onClose
     var close = function close() {
       if (onClose) {
         onClose();
@@ -23,16 +24,20 @@
     React.useEffect(function () {
       var escape = function escape(event) {
         if (event.key === "Escape") {
-          close();
+          close(); // Ferme la modal si la touche Escape est presser
         }
       };
+      // Ecouteur d'événements quand la modal est ouverte
       if (isOpen) {
         document.addEventListener("keydown", escape);
       }
+
+      // Suprime l'écouteur d'événements à la fermeture de la modal
       return function () {
         document.removeEventListener("keydown", escape);
       };
     }, [isOpen]);
+    //Ferme les autres modal
     React.useEffect(function () {
       if (isActive && isOpen) {
         var modals = document.querySelectorAll(".".concat(classes__default["default"].modal));
@@ -45,7 +50,7 @@
     }, [isOpen, isActive]);
     return isOpen && /*#__PURE__*/React__default["default"].createElement("div", {
       className: classes__default["default"].blocker
-    }, /*#__PURE__*/React__default["default"].createElement("div", {
+    }, " ", /*#__PURE__*/React__default["default"].createElement("div", {
       className: classes__default["default"].modal
     }, /*#__PURE__*/React__default["default"].createElement("a", {
       href: "#",
