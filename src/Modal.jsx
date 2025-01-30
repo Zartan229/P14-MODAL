@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 
 export default function Modal({ isOpen, onClose, modalContent, isActive }) {
+  // fermer la modal en appelant onClose
   const close = () => {
     if (onClose) {
       onClose();
@@ -13,19 +14,20 @@ export default function Modal({ isOpen, onClose, modalContent, isActive }) {
   useEffect(() => {
     const escape = (event) => {
       if (event.key === "Escape") {
-        close();
+        close();// Ferme la modal si la touche Escape est presser
       }
     };
-
+    // Ecouteur d'événements quand la modal est ouverte
     if (isOpen) {
       document.addEventListener("keydown", escape);
     }
 
-
+    // Suprime l'écouteur d'événements à la fermeture de la modal
     return () => {
       document.removeEventListener("keydown", escape);
     };
   }, [isOpen]); 
+  //Ferme les autres modal
   useEffect(() => {
     if (isActive && isOpen) {
       const modals = document.querySelectorAll(`.${classes.modal}`);
@@ -38,8 +40,8 @@ export default function Modal({ isOpen, onClose, modalContent, isActive }) {
   }, [isOpen, isActive]);
   return (
     isOpen && (
-      <div className={classes.blocker}>
-        <div className={classes.modal}>
+      <div className={classes.blocker}> {/* Bloque de l'arrière plan*/}
+        <div className={classes.modal}>{/* Bloque de la modale */}
           <a
             href="#"
             className={classes.closeModal}
@@ -50,7 +52,7 @@ export default function Modal({ isOpen, onClose, modalContent, isActive }) {
           >
             Fermer
           </a>
-          <div className={classes.closeModal}>{modalContent}</div>
+          <div className={classes.closeModal}>{modalContent}</div>{/* Contenu de la modale */}
         </div>
       </div>
     )
