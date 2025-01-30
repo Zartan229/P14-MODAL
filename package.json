@@ -1,6 +1,6 @@
 {
   "name": "modalmaxoc",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "dist/Modal.js",
   "style": "dist/style.module.css",
   "files": [
