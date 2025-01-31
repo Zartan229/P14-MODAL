@@ -10,8 +10,8 @@
     "build": "rollup -c",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Modal","React","Easy","Quick"],
+  "author": "Ortuno Maxime",
   "license": "ISC",
   "description": "Easy to use Modal for react",
   "peerDependencies": {
